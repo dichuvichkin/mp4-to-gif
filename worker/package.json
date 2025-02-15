@@ -1,0 +1,19 @@
+{
+  "name": "mp4-to-gif-worker",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "bull": "^4.10.0",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.0",
+    "@types/node-cron": "^3.0.11",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}

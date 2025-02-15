@@ -1,0 +1,34 @@
+<h2>Upload Your Video</h2>
+
+<!-- File input field -->
+<input type="file" class="upload-input" (change)="handleFileSelection($event)" #fileInput />
+
+<div *ngIf="selectedFile">
+ <!-- Display file details -->
+ <section class="file-details">
+   <h3>Selected Video Details:</h3>
+   <ul>
+     <li><strong>Filename:</strong> {{selectedFile?.name}}</li>
+     <li><strong>File Type:</strong> {{selectedFile?.type}}</li>
+     <li><strong>File Size:</strong> {{selectedFile?.size}} bytes</li>
+   </ul>
+ </section>
+
+ <!-- Upload button -->
+ <button (click)="uploadFile()">Start Converting</button>
+
+ <!-- Display upload status -->
+ <section [ngSwitch]="uploadStatus">
+   <p *ngSwitchCase="'loading'">⏳ Uploading, please wait...</p>
+   <p *ngSwitchCase="'converting'">⏳ Video is converting!</p>
+   <p *ngSwitchCase="'error'">❌ An error occurred.</p>
+   <p *ngSwitchDefault>🔄 Ready to convert your video.</p>
+ </section>
+
+  <div *ngIf="finalGifUrl" style="position: absolute;">
+    <h3>✅ Conversion Complete!</h3>
+    <img [src]="finalGifUrl" width="400" height="auto" alt="Converted GIF" style="max-width: 100%; border-radius: 8px;" />
+    <br>
+    <a [href]="finalGifUrl" [download]="gifName">Download GIF</a>
+  </div>
+</div>
